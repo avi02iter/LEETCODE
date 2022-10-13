@@ -86,7 +86,7 @@ class Solution{
     }
     
     static int memoiz(int N,int[] arr,int sum2,int[][] dp){
-        if(N<0&&sum2!=0){
+        if(N<=0&&sum2!=0){
             return 0;
         }
         if(sum2==0){
