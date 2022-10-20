@@ -24,12 +24,15 @@ class Solution {
         if(root==null){
             return 0;
         }
-        
-        int l=find(root.left);
-        int r=find(root.right);
-        int temp=Math.max(root.val,Math.max(l,r)+root.val);
-        int ans=Math.max(temp,l+r+root.val);
+         int l= Math.max(find(root.left), 0);
+        int r = Math.max(find(root.right), 0);
+        int temp=Math.max(l,r)+root.val;
+        if(root.left==null&&root.right==null){
+            temp=Math.max(temp,root.val);
+        }
+        int ans=Math.max(temp,root.val+l+r);
         res=Math.max(res,ans);
+        
         return temp;
     }
 }
