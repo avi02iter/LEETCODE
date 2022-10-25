@@ -7,7 +7,7 @@ class Solution {
         }
         for(int i:nums){
           
-            if(set.contains(i+diff)&&set.contains(i+2*diff)){
+            if(set.contains(i-diff)&&set.contains(i-2*diff)){
                 count++;
             }
             
