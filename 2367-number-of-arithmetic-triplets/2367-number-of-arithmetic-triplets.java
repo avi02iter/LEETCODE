@@ -7,7 +7,7 @@ class Solution {
                 for(int k=j+1;k<n;k++){
                    if(nums[k]-nums[j]==diff&&nums[j]-nums[i]==diff){
                        count++;
-                      // break;
+                       break;
                    }
                 }
             }
