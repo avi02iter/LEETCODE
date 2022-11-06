@@ -1,45 +1,41 @@
 class Solution {
 
-    public int[] findDiagonalOrder(int[][] matrix) {
-       
-
-        int rows = matrix.length;
-        int cols = matrix[0].length;
-        int[] result = new int[rows * cols];
+    public int[] findDiagonalOrder(int[][] mat) {
+        int m = mat.length;
+        int n = mat[0].length;
+        int[] ans = new int[m * n];
         int r = 0;
         int c = 0;
 
-        for (int i = 0; i < result.length; i++) {
-            result[i] = matrix[r][c];
-            if ((r + c) % 2 == 0) { // Move Up
-                if (c == cols - 1) {
-                    // Reached last column. Now move to below cell in the same column.
-                    // This condition needs to be checked first due to top right corner cell.
-                    r++;
-                } else if (r == 0) {
-                    // Reached first row. Now move to next cell in the same row.
-                    c++;
+        if (m == 0 || n == 0) {
+            return new int[0];
+        }
+        for (int i = 0; i < ans.length; i++) {
+            ans[i] = mat[r][c];
+            if ((r + c) % 2 == 0) { //if even digonal then move up else move down
+                if (c==n-1) { //like 1 here
+                    r++; //to column ko aage badha do
+                } else if (r==0) { //agar last column tak pahuch gye
+                    c++; //niche row me aa jaoo like here 3
                 } else {
-                    // Somewhere in middle. Keep going up diagonally.
                     r--;
-                    c++;
+                    c++; //if all normal the up move in diagonal like 7 here
                 }
-            } else { // Move Down
-                if (r == rows - 1) {
-                    // Reached last row. Now move to next cell in same row.
-                    // This condition needs to be checked first due to bottom left corner cell.
-                    c++;
-                } else if (c == 0) {
-                    // Reached first columns. Now move to below cell in the same column.
-                    r++;
+            } else { //move down
+                if (r==m-1) { //like 4 here
+                    c++; //ek row niche aa jaoo like 4 se 7 tak
+                } else if (c==0) { //row me last me phuch gye then
+                    r++; //ek column aage badha do like 8 to 9 here
                 } else {
-                    // Somewhere in middle. Keep going down diagonally.
+                    //normal move in digonal down
                     r++;
                     c--;
                 }
             }
         }
-
-        return result;
+        return ans;
     }
 }
+
+
+
