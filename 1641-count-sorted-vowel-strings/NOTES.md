@@ -1,0 +1,1 @@
+lexicographicaly means in the same order a the dictionary.
