@@ -1,26 +1,19 @@
 class Solution {
+    int a = 1, e = 1, i = 1, o = 1, u = 1;
 
-    int ax[] = { 0 };
     public int countVowelStrings(int n) {
-      solve(0, 0, n);
-        
-        return ax[0];
+        for (int j = 1; j < n; j++) {
+            increment();
+        }
+
+        return a + e + i + o + u;
     }
 
-    void solve(int idx, int count, int n) {
-       if(count>n )
-           return;
-       
-        
-        if(count==n){
-            ax[0]++;
-            return;
-        }
-        
-        
-        for(int i=idx;i<5;i++)
-        solve(i, count+1, n);       
-        
-
+    public void increment() {
+        a = a + e + i + o + u;
+        e = e + i + o + u;
+        i = i + o + u;
+        o = o + u;
+        u = u;
     }
 }
