@@ -10,7 +10,8 @@ class Solution {
         char c4 = s.charAt(4);
         for (char i = c1; i <= c3; i++) {
             for (char j = c2; j <= c4; j++) {
-                li.add("" + i + j);
+                //li.add("" + i + j);
+                li.add(new String(new char[] { i, j }));
             }
         }
 
