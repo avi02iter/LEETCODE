@@ -1,6 +1,6 @@
 class Solution {
     public List<List<Integer>> generate(int numRows) {
-        List<List<Integer>> li=new ArrayList<List<Integer>>();
+        List<List<Integer>> li=new ArrayList<>();
         
         for(int i=0;i<numRows;i++){
             ArrayList<Integer> row=new ArrayList<>();
@@ -8,6 +8,8 @@ class Solution {
                 if(j==0||i==j){
                     row.add(1);
                 }else{
+                 
+                    
                     row.add(li.get(i-1).get(j)+li.get(i-1).get(j-1));
                     
                     
