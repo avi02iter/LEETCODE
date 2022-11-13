@@ -18,17 +18,17 @@ class Solution {
                 hm.put(ch, hm.get(ch) - 1);
                 if (hm.get(ch) == 0) ct--;
             }
-            // if (j - i + 1 < k) j++;
-            if (j - i + 1 == k) {
+            if (j - i + 1 < k) j++;
+           else if (j - i + 1 == k) {
                 if (ct == 0) ls.add(i);
                 if (hm.containsKey(s.charAt(i))) {
                     hm.put(s.charAt(i), hm.get(s.charAt(i)) + 1);
                     if (hm.get(s.charAt(i)) == 1) ct++;
                 }
                 i++;
-                // j++;
+                 j++;
             }
-            j++;
+            
         }
         return ls;
     }
