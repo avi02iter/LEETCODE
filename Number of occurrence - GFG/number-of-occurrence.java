@@ -38,12 +38,60 @@ public class Main {
 class Solution {
     int count(int[] arr, int n, int x) {
         int count=0;
-      for(int i=0;i<n;i++){
-          if(arr[i]==x){
-              count++;
-          }
-      }
+    //   for(int i=0;i<n;i++){
+    //       if(arr[i]==x){
+    //           count++;
+    //       }
+    //   }
       
-      return count;
+    //   return count;
+   int f=binaryfirst(arr,x,n);
+   int l=binaryLast(arr,x,n);
+  if(f==-1&&l==-1){
+      return 0;
+  }
+  
+    return l-f+1;
+    }
+     public int binaryfirst(int[] nums, int target, int n) {
+        int start = 0;
+        int end = n - 1;
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+            if (nums[mid] == target) {
+                if (mid-1>=0&&nums[mid - 1] == target) {
+                    end = mid - 1;
+                } else {
+                    return mid;
+                }
+            } else if (nums[mid] < target) {
+                start = mid + 1;
+            } else {
+                end = mid - 1;
+            }
+        }
+
+        return -1;
+    }
+
+    public int binaryLast(int[] nums, int target, int n) {
+        int start = 0;
+        int end = n - 1;
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+            if (nums[mid] == target) {
+                if (mid+1<nums.length&&nums[mid + 1] == target) {
+                    start = mid + 1;
+                } else {
+                    return mid;
+                }
+            } else if (nums[mid] < target) {
+                start = mid + 1;
+            } else {
+                end = mid - 1;
+            }
+        }
+
+        return -1;
     }
 }
