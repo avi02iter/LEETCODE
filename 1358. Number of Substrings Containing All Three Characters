@@ -1,1 +1,18 @@
-wait
+class Solution {
+    public int numberOfSubstrings(String s) {
+        int count=0;
+        int n=s.length();
+        int[] a=new int[3];  //new array bana rhe aur a,b,c ka count array me update kr rha
+     int i=0;
+     for(int j=0;j<n;j++){
+         a[s.charAt(j)-'a']++;   
+         while(i<=j&&a[0]>0&&a[1]>0&&a[2]>0){   if atleast aa jata hai a ,b,c then 
+             count+=s.length()-j;    substring nikalo
+             a[s.charAt(i)-'a']--;    phir sliding window me aage badho aur vo character hata do..
+             i++;
+
+         }
+     }
+     return count;
+    }
+}
