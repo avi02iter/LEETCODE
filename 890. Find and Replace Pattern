@@ -1,0 +1,36 @@
+//plz watch pepcoding solution for better understanding................:)
+
+class Solution {
+    public List<String> findAndReplacePattern(String[] words, String pattern) {
+        List<String> li=new ArrayList<>();
+        for(String str:words){
+            if(match(str,pattern)){
+                li.add(str);
+            }
+        }
+        return li;
+    }
+
+    public boolean match(String s,String pattern){
+        int np=pattern.length();
+        int nw=s.length();
+        HashMap<Character,Character> map=new HashMap<>(); //to check the pattern to word mapping so that no same pattern match with word  see test case 1
+        HashSet<Character> set=new HashSet<>(); // vice versa no same word get mapped with pattern see test case 2
+        for(int i=0;i<np;i++){
+            char pat=pattern.charAt(i);
+            char wo=s.charAt(i);
+            if(map.containsKey(pat)){
+                if(map.get(pat)!=wo){    //phle pattern ke mapping word ke sath same hai new word se to shi chal rhe.....agar nhi same hai alag aa gya to dusre se map nhi ho skta ek baar map ho chuka hai to return false
+                    return false;
+                }
+            }else{
+                if(set.contains(wo)){   // yha dekho ki word jo aa rha vo to same word different pattern ke sath mhi ho gya na mtlb new pattern ke sath same word see test case 2
+                    return false;
+                }
+                map.put(pat,wo);
+                set.add(wo);   // if not add that word to set
+            }
+        }
+        return true;
+    }
+}
