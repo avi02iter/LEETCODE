@@ -62,51 +62,67 @@ class pair  {
 
 class Solution {
     
-    public pair indexes(long v[], long x)
-    {
-        int n=v.length;
-        int f=binaryfirst(v,x,n);
-        int l=binarylast(v,x,n);
-        
+    public pair indexes(long v[], long x){
+    int n=v.length;
+    
+        int f=first(v,0,x);
+        int l=last(v,0,x);
         return new pair(f,l);
     }
+    public int first(long[] v,int idx,long x){
+      if(idx==v.length){
+          return -1;
+      }
+      if(v[idx]==x){
+          return idx;
+      }else{
+           int fissa=first(v,idx+1,x);
+           return fissa;
+      }
+     
+      
+      }
     
-    public int binaryfirst(long[] v,long x,int n){
-        int start=0;
-        int end=n-1;
-        while(start<=end){
-            int mid=start+(end-start)/2;
-            if(v[mid]==x){
-               if(mid-1>=0&&v[mid-1]==x){
-                   end=mid-1;
-               }else{
-                   return mid;
-               }
-            }else if(v[mid]<x){
-               start=mid+1;
-            }else{
-               end=mid-1;
-            }
-        }
+    
+        
+        
+    
+    
+    
+     public int last(long[] v,int idx,long x){
+    if(idx==v.length){
         return -1;
-    }
-     public int binarylast(long[] v,long x,int n){
-        int start=0;
-        int end=n-1;
-        while(start<=end){
-            int mid=start+(end-start)/2;
-            if(v[mid]==x){
-               if(mid+1<v.length&&v[mid+1]==x){
-                   start=mid+1;
-               }else{
-                   return mid;
-               }
-            }else if(v[mid]>x){
-              end=mid-1;
-            }else{
-                start=mid+1;
-            }
         }
-        return -1;
+        int lissa=last(v,idx+1,x);
+        if(lissa==-1){
+            if(v[idx]==x){
+                return idx;
+            }else{
+                return -1;
+            }
+        }else{
+            return lissa;
+        }
+    
+    
+        
+        
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
