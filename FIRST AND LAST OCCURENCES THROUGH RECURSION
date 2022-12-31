@@ -1,0 +1,61 @@
+
+class Solution {
+    
+    public pair indexes(long v[], long x){
+    int n=v.length;
+    
+        int f=first(v,0,x);
+        int l=last(v,0,x);
+        return new pair(f,l);
+    }
+    public int first(long[] v,int idx,long x){
+      if(idx==v.length){
+          return -1;
+      }
+      if(v[idx]==x){     //phle check kro phir aage badhao kyunki hame first occurence nikalna hai to if found then return and if not then go for aage stack me ya phir array me
+          return idx;          
+      }else{
+           int fissa=first(v,idx+1,x);      
+           return fissa;
+      }
+     
+      
+      }
+  
+     public int last(long[] v,int idx,long x){
+    if(idx==v.length){
+        return -1;
+        }
+        int lissa=last(v,idx+1,x); //aage badhao stack me ya phir array me
+        if(lissa==-1){     // agar aage badhane se nhi mil rha to hum index se check krenge u can watch the pepcoding video 
+            if(v[idx]==x){    //agar isme mil gya to return kro nhi to -1 return krdo 
+                return idx;
+            }else{
+                return -1;     //return -1
+            }
+        }else{
+            return lissa;   //and if it is already found in when increasing the stack and array then return here because hame last index nikalna hai hame phle check krna hi nhi hai
+        }
+    
+    
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
