@@ -1,0 +1,30 @@
+import java.util.*;
+
+public class f {
+    public static void main(String[] args) {
+        ArrayList<String> re = new ArrayList<>();
+        String str = "abcd";
+        re = sub(str);
+        System.out.println(re);
+
+    }
+
+    public static ArrayList<String> sub(String s) {
+        if (s.length() == 0) {
+            ArrayList<String> bre = new ArrayList<>();
+            bre.add(" ");
+            return bre;
+        }
+        char ch = s.charAt(0);
+        String ros = s.substring(1);
+        ArrayList<String> rre = sub(ros);
+        ArrayList<String> myres = new ArrayList<>();
+        for (String str : rre) {
+            myres.add(" " + str);
+        }
+        for (String str : rre) {
+            myres.add(ch + str);
+        }
+        return myres;
+    }
+}
