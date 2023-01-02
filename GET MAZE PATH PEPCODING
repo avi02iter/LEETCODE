@@ -1,0 +1,43 @@
+//IMPORTANT QUESTION   //can check pepcoding video
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        Scanner sc=new Scanner(System.in);
+        int m=sc.nextInt();
+        int n=sc.nextInt();
+        ArrayList<String> li=getMazePaths(0, 0, m-1, n-1);
+        System.out.println(li);
+        
+
+    }
+    
+    // sr - source row
+    // sc - source column
+    // dr - destination row
+    // dc - destination column
+    public static ArrayList<String> getMazePaths(int sr, int sc, int dr, int dc) {
+        if(sr==dr&&sc==dc){
+            ArrayList<String> brew=new ArrayList<>();
+            brew.add("");
+            return brew;
+        }
+        ArrayList<String> h=new ArrayList<>();
+        ArrayList<String> v=new ArrayList<>();
+        ArrayList<String> li=new ArrayList<>();
+        if(sr<dr){
+            v=getMazePaths( sr+1,  sc,  dr,  dc);     //moving vertically
+        }
+        if(sc<dc){
+            h=getMazePaths(sr,  sc+1,  dr,  dc);       //moving horizontally
+        }
+         for(String hpath:h){
+          li.add("h"+hpath);
+      }
+      for(String vpath:v){
+          li.add("v"+vpath);
+      }
+      return li;
+    }
+
+}
