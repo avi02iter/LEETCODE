@@ -1,0 +1,39 @@
+
+import java.util.*;
+
+public class get {
+    public static void main(String[] args) {
+        int row = 3;
+        int col = 3;
+        ArrayList<String> li = getMaze(1, 1, row, col);
+        System.out.println(li);
+    }
+
+    public static ArrayList<String> getMaze(int sr, int sc, int dr, int dc) {
+        if (sr == dr && sc == dc) {
+            ArrayList<String> brew = new ArrayList<>();
+            brew.add(" ");
+            return brew;
+        }
+        ArrayList<String> li = new ArrayList<>();        
+        for (int ms = 1; ms <= dc - sc; ms++) {                           //for horizontal move
+            ArrayList<String> hpath = getMaze(sr, sc + ms, dr, dc);
+            for (String hp : hpath) {
+                li.add("h" + ms + hp);
+            }
+        }
+        for (int ms = 1; ms <= dr - sr; ms++) {                          //for vertical move
+            ArrayList<String> vpath = getMaze(sr + ms, sc, dr, dc);
+            for (String vp : vpath) {
+                li.add("v" + ms + vp);
+            }
+        }
+        for (int ms = 1; ms <= dr - sr && ms <= dc - sc; ms++) {          //for diagonal move
+            ArrayList<String> dpath = getMaze(sr + ms, sc + ms, dr, dc);
+            for (String dp : dpath) {
+                li.add("d" + ms + dp);
+            }
+        }
+        return li;
+    }
+}
