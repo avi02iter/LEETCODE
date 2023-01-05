@@ -1,0 +1,22 @@
+// FROM THE QUESTION OF GET SUBSEQUNECE , IF WE GIVE LARGER STRING THEN IT CAUSE LOTS OF MEMORY ERROR , SO RATHER STORING IT IN ARRAYLIST START PRINTING IT , IF "A" JOINS , THEN JOIN THE "A" AND IF NOT THEN JOINS THE "" THE BLANK SPACE
+
+  public static void main(String[] args) throws Exception {
+    Scanner sc=new Scanner(System.in);
+    String str=sc.nextLine();
+ 
+    printSS(str,"");
+     
+    }
+
+    public static void printSS(String str, String ans) {
+        if(str.length()==0){
+            System.out.println(ans);
+            return ;
+        }
+        
+        char c=str.charAt(0);
+        String re=str.substring(1);
+        printSS(re,ans+"");   //if "a" wants don't to included
+        printSS(re,ans+c);    //if "a" wants to included
+        
+    }
