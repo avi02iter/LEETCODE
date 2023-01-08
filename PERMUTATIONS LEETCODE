@@ -1,0 +1,67 @@
+//more space complexity
+//for revision plz see striver video of permutations plz
+class Solution {
+    public List<List<Integer>> permute(int[] nums) {
+      List<List<Integer>> ans=new ArrayList<>();
+      List<Integer> data=new ArrayList<>();       
+      boolean freq[]= new boolean[nums.length];  //maintain boolean which element is taken or not
+       return print(nums,data,freq,ans);
+       
+
+
+    }
+    public List<List<Integer>> print(int[] nums,List<Integer> data,boolean[] freq,List<List<Integer>> ans){
+        if(data.size()==nums.length){
+            ans.add(new ArrayList<Integer>(data));
+            return ans;
+        }
+        for(int i=0;i<nums.length;i++){
+            if(!freq[i]){
+                freq[i]=true;
+                data.add(nums[i]);
+                print(nums,data,freq,ans);
+                data.remove(data.size()-1);  //removing the last element after recursive call
+                freq[i]=false;
+            }
+        }
+  return ans;
+
+    }
+}
+
+
+//efficient solution reduces space complexity 
+//for revision plz seee striver video solution
+
+class Solution {
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> ans=new ArrayList<>();
+        return print(nums,ans,0);
+        
+    }
+
+    public List<List<Integer>> print(int[] nums,List<List<Integer>> ans,int index){
+         if(index==nums.length){
+             List<Integer> data=new ArrayList<>();
+             for(int i=0;i<nums.length;i++){
+                 data.add(nums[i]);
+             }
+             ans.add(new ArrayList<>(data));
+             return ans;
+         }
+         //main calls
+        for(int i=index;i<nums.length;i++){      //index e last nums array tak swap kro 
+            swap(i,index,nums);
+            print(nums,ans,index+1);
+            swap(i,index,nums);           //restore array after swapping and make it original for another array
+        }
+        return ans;
+
+    }
+    //for swapping
+    public void swap(int i,int j,int[] nums){
+             int temp=nums[i];
+             nums[i]=nums[j];
+             nums[j]=temp;
+         }
+}
