@@ -1,0 +1,30 @@
+class Solution {
+    public int longestSubstring(String s, int k) {
+        int freq[]=new int[26];
+        int max=0;
+        for(int i=0;i<s.length();i++){
+            freq[s.charAt(i)-'a']++;
+        }
+        
+
+        boolean valid=true;
+        int start=0;
+        for(int end=0;end<s.length();end++){
+             if(freq[s.charAt(end)-'a']<k){
+                 String sb=s.substring(start,end);
+                 max=Math.max(max,longestSubstring(sb,k));
+                 start=end+1;
+                 valid=false;
+             }
+        }
+
+        if(valid){
+            return s.length();
+        }else{
+            return Math.max(max,longestSubstring(s.substring(start),k));
+        }
+
+    }
+}
+
+//O(n^2)
