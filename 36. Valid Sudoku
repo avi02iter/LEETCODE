@@ -1,2 +1,22 @@
+//bad approach
+class Solution {
+    public boolean isValidSudoku(char[][] board) {
+        int n=board.length;
+        int m=board[0].length;
+        HashSet<String> set=new HashSet<>();
+        
+        for(int i=0;i<9;i++){
+            for(int j=0;j<9;j++){
+                if(board[i][j]!='.'){
+                if(!set.add("row"+board[i][j]+i)||!set.add("col"+board[i][j]+j)||!set.add("box"+board[i][j]+(i/3)*3+" "+j/3)){
+                    return false;
+                }
+                }
+            }
+        }
+return true;
 
-doing
+    }
+}
+
+//good approach
