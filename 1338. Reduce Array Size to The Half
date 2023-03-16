@@ -1,0 +1,36 @@
+You are given an integer array arr. You can choose a set of integers and remove all the occurrences of these integers in the array.
+
+Return the minimum size of the set so that at least half of the integers of the array are removed.
+
+ //code
+ 
+ class Solution {
+    public int minSetSize(int[] arr) {
+        Map<Integer,Integer> map=new TreeMap<>();
+        int count=0;
+        for(int i=0;i<arr.length;i++){
+            map.put(arr[i],map.getOrDefault(arr[i],0)+1);
+        }
+       int requiredSize=arr.length;
+      //for storing frequency of array we take ArrayList
+      ArrayList<Integer> li=new ArrayList<>();
+      for(Map.Entry<Integer,Integer> e:map.entrySet()){
+          li.add(e.getValue());
+      }
+      Collections.sort(li);
+      Collections.reverse(li);
+      int sum=requiredSize;
+      //required size me arraylist ke element minus krte jaao aur jaise hi sum ke equal ya chota ho whi count return krdo; here sum is required size of array that is half of the array
+      for(int i=0;i<li.size();i++){
+        sum-=li.get(i);
+           count++;
+           if(sum<=requiredSize/2){
+               return count;
+           }
+      }
+     
+         
+
+        return count;
+    }
+}
