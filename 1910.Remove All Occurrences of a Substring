@@ -1,0 +1,28 @@
+Given two strings s and part, perform the following operation on s until all occurrences of the substring part are removed:
+
+Find the leftmost occurrence of the substring part and remove it from s.
+Return s after removing all occurrences of part.
+
+A substring is a contiguous sequence of characters in a string.
+
+//code
+
+class Solution {
+    public String removeOccurrences(String s, String part) {
+        while(true){
+             int index=s.indexOf(part);  //it find the first occurence of the part
+             int end=index+part.length()-1; // it means the part end at end index
+             
+             if(index==-1){
+                   break;
+               }
+             //now remove the index to end part of part from the string
+             s=s.substring(0,index)+s.substring(end+1);
+               
+
+        }
+        return s;
+         
+    }
+}
+
