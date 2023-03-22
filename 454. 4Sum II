@@ -1,0 +1,31 @@
+Given four integer arrays nums1, nums2, nums3, and nums4 all of length n, return the number of tuples (i, j, k, l) such that:
+
+0 <= i, j, k, l < n
+nums1[i] + nums2[j] + nums3[k] + nums4[l] == 0
+
+O(N^2)
+O(N^2)
+
+//code
+
+class Solution {
+    public int fourSumCount(int[] nums1, int[] nums2, int[] nums3, int[] nums4) {
+        int count=0;
+        HashMap<Integer,Integer> map=new HashMap<>();
+        for(int n1:nums1){
+            for(int n2:nums2){
+                int sum1=n1+n2;
+                map.put(sum1,map.getOrDefault(sum1,0)+1);
+            }
+        }
+        //now check for their sum as (n1+n2)=-(n3+n4) as n1+n2+n3+n4=0
+        //traverse in n3 and n4
+        for(int n3:nums3){
+            for(int n4:nums4){
+                int sum2=n3+n4;
+                count+=map.getOrDefault(-sum2,0);
+            }
+        }
+        return count;
+    }
+}
