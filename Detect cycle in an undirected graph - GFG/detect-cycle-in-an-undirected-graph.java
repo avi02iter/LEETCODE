@@ -64,10 +64,12 @@ class Solution {
                if(vis[it]==false){
                    vis[it]=true;
                    q.add(new Pair(it,nod));
-               }else if(paren!=it){
+               }else{
+                   
+               if(paren!=it){
                        return true;
                    }
-               
+               }
            }
        }
        return false;
