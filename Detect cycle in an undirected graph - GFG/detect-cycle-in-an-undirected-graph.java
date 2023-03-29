@@ -55,7 +55,7 @@ class Solution {
     public boolean check(int i,boolean[] vis,ArrayList<ArrayList<Integer>> adj){
          Queue<Pair> q=new ArrayDeque<>();
         vis[i]=true;
-       q.add(new Pair(i,-1));
+       q.add(new Pair(i,0));
        while(q.size()>0){
            int nod=q.peek().node;
            int paren=q.peek().parent;
