@@ -29,24 +29,21 @@ class Solution
     //Function to calculate sum of all numbers present in a string.
     public static long findSum(String str)
     {
-         String temp = "0";
-    int sum = 0;
-    
-        for(int i = 0 ; i< str.length() ; i++){
-            
-            char ch = str.charAt(i);
-            
-            if(Character.isDigit(ch))
-            temp += ch ;
-            else
-            {sum += Integer.parseInt(temp);
-            temp = "0";
+        String s="0";
+        int sum=0;
+        for(int i=0;i<str.length();i++){
+            char c=str.charAt(i);
+            if(Character.isDigit(c)){
+                s+=c;
+            }else{
+                int n=Integer.valueOf(s);
+                sum+=n;
+                s="0";
             }
-            
-            
-            
-        } // your cod
-     return sum + Integer.parseInt(temp);
+        }
+         sum+=Integer.parseInt(s);
+        
+        return sum;
     }
     
 }
